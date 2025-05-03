@@ -3,6 +3,7 @@ package com.backend.application.service.impl;
 import com.backend.application.service.ProductService;
 import com.backend.domain.model.Product;
 import com.backend.domain.repository.ProductRepository;
+import com.backend.infraestrcuture.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,9 +24,11 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+    public Product getProductById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product", id));
     }
+
 
     @Override
     public List<Product> getAllProducts() {

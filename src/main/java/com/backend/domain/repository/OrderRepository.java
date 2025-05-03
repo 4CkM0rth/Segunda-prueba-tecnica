@@ -1,4 +1,6 @@
-package com.backend.domain.model;
+package com.backend.domain.repository;
+
+import com.backend.domain.model.Order;
 
 import java.util.List;
 import java.util.Optional;

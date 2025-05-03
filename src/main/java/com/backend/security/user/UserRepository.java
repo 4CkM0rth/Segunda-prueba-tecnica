@@ -1,4 +1,4 @@
-package com.backend.security.auth.user;
+package com.backend.security.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

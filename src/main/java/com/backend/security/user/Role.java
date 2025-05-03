@@ -1,4 +1,4 @@
-package com.backend.security.auth.user;
+package com.backend.security.user;
 
 public enum Role {
     USER,

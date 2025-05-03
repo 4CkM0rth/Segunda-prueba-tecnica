@@ -2,22 +2,34 @@ package com.backend.infraestrcuture.persistence.entity;
 
 import com.backend.domain.model.Product;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "products")
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
     private BigDecimal price;
+
+    @Column(nullable = false)
     private Integer stock;
+
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
     public static ProductEntity fromDomain(Product product) {
