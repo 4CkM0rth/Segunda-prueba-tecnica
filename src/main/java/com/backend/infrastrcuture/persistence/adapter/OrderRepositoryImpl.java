@@ -1,11 +1,11 @@
-package com.backend.infraestrcuture.persistence.adapter;
+package com.backend.infrastrcuture.persistence.adapter;
 
 import com.backend.domain.model.Order;
 import com.backend.domain.model.OrderItem;
 import com.backend.domain.repository.OrderRepository;
-import com.backend.infraestrcuture.persistence.entity.OrderEntity;
-import com.backend.infraestrcuture.persistence.entity.OrderItemEntity;
-import com.backend.infraestrcuture.persistence.repository.JpaOrderRepository;
+import com.backend.infrastrcuture.persistence.entity.OrderEntity;
+import com.backend.infrastrcuture.persistence.entity.OrderItemEntity;
+import com.backend.infrastrcuture.persistence.repository.JpaOrderRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,9 +1,8 @@
-package com.backend.infraestrcuture.controller;
+package com.backend.infrastrcuture.controller;
 
 import com.backend.application.service.OrderService;
 import com.backend.domain.model.Order;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;

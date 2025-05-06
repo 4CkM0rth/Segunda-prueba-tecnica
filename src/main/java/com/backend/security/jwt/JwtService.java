@@ -2,7 +2,9 @@ package com.backend.security.jwt;
 
 import com.backend.security.user.User;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -12,10 +14,12 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "MiClaveSecretaJWT1234567890_ProtegerBienSegura";
+    @Value("${app.jwt-secret}")
+    private String SECRET_KEY;
 
     private Key getSignInKey() {
-        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY); // ✅ decodifica base64 correctamente
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String generateToken(User user) {

@@ -1,6 +1,30 @@
-<div>
-  <h2>Product List</h2>
-  <ul>
-    <li *ngFor="let product of products">{{ product.name }} - {{ product.price }}</li>
-  </ul>
+<div class="product-list-container">
+  <div class="filters">
+    <input [(ngModel)]="filterName" placeholder="Filtrar por nombre" />
+    <input [(ngModel)]="filterPrice" placeholder="Filtrar por precio" type="number" />
+    <input [(ngModel)]="filterDate" placeholder="Filtrar por fecha" type="date" />
+  </div>
+
+  <button class="create-button" (click)="navigateToCreate()">Crear Producto</button>
+
+  <table class="product-table">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Fecha de creación</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of filteredProducts()">
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td>{{ product.stock }}</td>
+      <td>{{ product.createdAt | date:'short' }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

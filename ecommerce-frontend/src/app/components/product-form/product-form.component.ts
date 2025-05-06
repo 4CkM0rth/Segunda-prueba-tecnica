@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './product-form.component.html',
-  imports: [
-    FormsModule
-  ],
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent {
   name = '';
+  description = '';
   price = 0;
+  stock = 0;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   createProduct() {
-    const product = { name: this.name, price: this.price };
+    const product = {
+      name: this.name,
+      description: this.description,
+      price: this.price,
+      stock: this.stock
+    };
+
     this.productService.create(product).subscribe(
-      () => alert('Product created'),
-      err => alert('Creation failed')
+      () => this.router.navigate(['/products']),
+      err => alert('Error al crear producto')
     );
   }
 }

@@ -1,6 +1,44 @@
-<div>
-  <h2>Create Product</h2>
-  <input [(ngModel)]="name" placeholder="Product Name">
-  <input [(ngModel)]="price" type="number" placeholder="Price">
-  <button (click)="createProduct()">Create</button>
+<div class="product-form-container">
+  <h2>Nuevo Producto</h2>
+
+  <form (ngSubmit)="createProduct()" #productForm="ngForm">
+    <label for="name">Nombre del producto*</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="name"
+      required
+    />
+
+    <label for="description">Descripción*</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="description"
+      required
+    ></textarea>
+
+    <label for="price">Precio*</label>
+    <input
+      type="number"
+      id="price"
+      name="price"
+      [(ngModel)]="price"
+      min="0"
+      required
+    />
+
+    <label for="stock">Stock*</label>
+    <input
+      type="number"
+      id="stock"
+      name="stock"
+      [(ngModel)]="stock"
+      min="0"
+      required
+    />
+
+    <button type="submit">Guardar Producto</button>
+  </form>
 </div>

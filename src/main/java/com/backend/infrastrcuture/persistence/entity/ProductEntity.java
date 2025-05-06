@@ -1,4 +1,4 @@
-package com.backend.infraestrcuture.persistence.entity;
+package com.backend.infrastrcuture.persistence.entity;
 
 import com.backend.domain.model.Product;
 import jakarta.persistence.*;

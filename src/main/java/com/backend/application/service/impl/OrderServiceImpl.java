@@ -3,11 +3,10 @@ package com.backend.application.service.impl;
 import com.backend.application.service.OrderService;
 import com.backend.domain.model.Order;
 import com.backend.domain.repository.OrderRepository;
-import com.backend.infraestrcuture.exception.ResourceNotFoundException;
+import com.backend.infrastrcuture.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {

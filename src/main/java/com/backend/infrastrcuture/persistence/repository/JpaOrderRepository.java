@@ -1,6 +1,6 @@
-package com.backend.infraestrcuture.persistence.repository;
+package com.backend.infrastrcuture.persistence.repository;
 
-import com.backend.infraestrcuture.persistence.entity.OrderEntity;
+import com.backend.infrastrcuture.persistence.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

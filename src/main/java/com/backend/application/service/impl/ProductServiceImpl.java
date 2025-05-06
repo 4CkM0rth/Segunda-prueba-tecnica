@@ -3,11 +3,10 @@ package com.backend.application.service.impl;
 import com.backend.application.service.ProductService;
 import com.backend.domain.model.Product;
 import com.backend.domain.repository.ProductRepository;
-import com.backend.infraestrcuture.exception.ResourceNotFoundException;
+import com.backend.infrastrcuture.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImpl  implements ProductService {

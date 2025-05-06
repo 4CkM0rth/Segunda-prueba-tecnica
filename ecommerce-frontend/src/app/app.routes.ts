@@ -2,11 +2,17 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { AuthGuard } from './services/auth.guard';
+import { HomeComponent } from './components/home/home.component';
+import {ProductFormComponent} from './components/product-form/product-form.component';
 
 export const routes: Routes = [
-  { path: '', component: ProductListComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'new-product', component: ProductFormComponent },
+  { path: 'products', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: ProductFormComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' }
 ];
+
+

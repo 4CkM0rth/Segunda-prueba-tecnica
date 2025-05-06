@@ -1,12 +1,13 @@
-package com.backend.infraestrcuture.exception;
+package com.backend.infrastrcuture.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
+import java.util.Map;
+
+//@ControllerAdvice
 public class GlobalExceptionHandler  {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -16,9 +17,10 @@ public class GlobalExceptionHandler  {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiException> handleException(Exception ex){
+    public ResponseEntity<?> handle(Exception ex) {
+        ex.printStackTrace(); // Para ver el error completo
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ApiException(ex.getMessage()));
+                .body(Map.of("error", ex.getMessage()));
     }
 
 

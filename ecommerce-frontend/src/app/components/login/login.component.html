@@ -1,6 +1,17 @@
-<div>
-  <h2>Login</h2>
-  <input [(ngModel)]="username" placeholder="Username">
-  <input [(ngModel)]="password" type="password" placeholder="Password">
-  <button (click)="login()">Login</button>
+<div class="auth-container">
+  <form class="auth-form" (ngSubmit)="onSubmit()">
+    <h2>Iniciar Sesión</h2>
+
+    <label for="username">Usuario*</label>
+    <input id="username" name="username" type="text" [(ngModel)]="loginForm.value.username" required />
+
+    <label for="password">Contraseña*</label>
+    <input id="password" name="password" type="password" [(ngModel)]="loginForm.value.password" required />
+
+    <button type="submit">Iniciar Sesión</button>
+
+    <p class="auth-footer">
+      ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+    </p>
+  </form>
 </div>

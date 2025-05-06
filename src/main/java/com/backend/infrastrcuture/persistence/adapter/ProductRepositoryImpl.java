@@ -1,9 +1,9 @@
-package com.backend.infraestrcuture.persistence.adapter;
+package com.backend.infrastrcuture.persistence.adapter;
 
 import com.backend.domain.model.Product;
 import com.backend.domain.repository.ProductRepository;
-import com.backend.infraestrcuture.persistence.entity.ProductEntity;
-import com.backend.infraestrcuture.persistence.repository.JpaProductRepository;
+import com.backend.infrastrcuture.persistence.entity.ProductEntity;
+import com.backend.infrastrcuture.persistence.repository.JpaProductRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

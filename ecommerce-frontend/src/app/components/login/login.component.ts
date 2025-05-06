@@ -1,25 +1,35 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
-  imports: [
-    FormsModule
-  ],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  loginForm: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.loginForm = this.fb.group({
+      username: [''],
+      password: ['']
+    });
+  }
 
-  login() {
-    this.authService.login({ username: this.username, password: this.password }).subscribe(
-      res => this.authService.saveToken(res.token),
-      err => alert('Login failed')
-    );
+  onSubmit(): void {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res: any) => {
+        this.authService.saveToken(res.token);
+        this.router.navigate(['/products']);
+      },
+      error: () => {
+        alert('Login failed');
+      }
+    });
   }
 }

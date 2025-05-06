@@ -1,7 +1,6 @@
-package com.backend.infraestrcuture.persistence.entity;
+package com.backend.infrastrcuture.persistence.entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

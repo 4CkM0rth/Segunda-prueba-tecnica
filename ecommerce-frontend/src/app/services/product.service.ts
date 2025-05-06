@@ -1,27 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
   private apiUrl = 'http://localhost:8080/api/products';
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private http: HttpClient) {}
 
-  private getHeaders() {
-    return {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.getToken()}`,
-      }),
-    };
-  }
-
-  getAll(): Observable<any> {
-    return this.http.get(this.apiUrl, this.getHeaders());
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   create(product: any): Observable<any> {
-    return this.http.post(this.apiUrl, product, this.getHeaders());
+    return this.http.post<any>(this.apiUrl, product);
   }
 }
